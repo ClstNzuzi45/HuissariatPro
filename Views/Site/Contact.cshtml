@@ -1,0 +1,21 @@
+﻿@* ===== Contact.cshtml ===== *@
+@model HuissariatPro.ViewModels.ContactViewModel
+@{ ViewData["Title"] = "Contact"; Layout = "_LayoutSite"; }
+<section class="section"><div class="container" style="max-width:900px;">
+    <div class="sec-head"><h2>📞 Contactez-nous</h2><p>Une question ? Une demande de constat, de signification ? Écrivez-nous.</p></div>
+    @if(TempData["Success"] != null){<div class="alert alert-success" style="background:#f0fdf4;border:1px solid #bbf7d0;padding:14px;border-radius:12px;margin-bottom:16px;">✅ @TempData["Success"]</div>}
+    <div class="grid-3" style="grid-template-columns:1fr 1.2fr;">
+        <div class="card"><h3>Nos coordonnées</h3><p>🏛️ Immeuble de la Justice, Blvd du 30 Juin<br>Kinshasa — Gombe, RDC</p><p>📞 +243 900 000 000<br>✉️ contact@huissiers-rdc.cd</p><p>🕐 Lun – Ven : 8h00 – 16h30<br>Sam : 9h00 – 12h00</p><p>🚨 Urgence constat : +243 900 000 001</p></div>
+        <form asp-action="Contact" method="post" class="card">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label>Nom complet *</label><input asp-for="Nom" class="form-control" placeholder="Votre nom" />
+            <label>Téléphone *</label><input asp-for="Telephone" class="form-control" placeholder="+243 ..." />
+            <label>Email</label><input asp-for="Email" class="form-control" placeholder="vous@email.com" />
+            <label>Service demandé</label><select asp-for="Service" class="form-control"><option>Signification</option><option>Constat</option><option>Recouvrement</option><option>Exécution</option><option>Autre</option></select>
+            <label>Province</label><input asp-for="Province" class="form-control" placeholder="Kinshasa" />
+            <label>Message *</label><textarea asp-for="Message" class="form-control" rows="4" placeholder="Décrivez votre besoin..."></textarea>
+            <button class="btn btn-gold w-full" style="margin-top:12px;">Envoyer ma demande →</button>
+        </form>
+    </div>
+</div></section>
+<style>.form-control{width:100%;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;margin:4px 0 12px;background:#f8fafc}label{font-size:12.5px;font-weight:700}</style>

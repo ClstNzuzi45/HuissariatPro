@@ -1,0 +1,12 @@
+﻿@model HuissariatPro.Models.Huissier
+<div class="huissier-card">
+    <div class="top">
+        <span class="avatar">@Model.Prenom[0]@Model.Nom[0]</span>
+        <div><strong>@Model.NomComplet</strong><br><span style="font-size:12px;color:#64748b;">@Model.Matricule</span><br><span class="badge">✅ @Model.Statut</span></div>
+    </div>
+    <p>📍 @Model.Ville — @Model.Province<br>🏛️ @Model.Etude?.Nom<br>📞 @Model.Telephone</p>
+    <div class="actions">
+        <a asp-controller="Site" asp-action="Contact" class="btn btn-dark btn-sm">Contacter</a>
+        <a asp-controller="Site" asp-action="Verifier" asp-route-type="huissier" asp-route-numero="@Model.Matricule" class="btn btn-sm" style="background:#fef3c7;">Vérifier</a>
+    </div>
+</div>

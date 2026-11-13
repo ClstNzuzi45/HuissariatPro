@@ -1,0 +1,22 @@
+﻿@* ===== Services.cshtml ===== *@
+@{
+    ViewData["Title"] = "Services & Tarifs"; Layout = "_LayoutSite";
+    var services = new[] {
+        ("📜","Signification d'Actes","Citation, assignation, commandement, notification.", "50 000 CDF"),
+        ("📸","Constat","Avant travaux, dégât des eaux, affichage, état des lieux.", "À partir de 150 000 CDF"),
+        ("🔨","Exécution de Décisions","Saisie, expulsion, recouvrement forcé.", "Sur devis"),
+        ("💰","Recouvrement Amiable","Relance, mise en demeure, négociation.", "Gratuit - 1ère consultation"),
+        ("📦","Inventaire & Vente","Inventaire après décès, vente aux enchères.", "Sur devis"),
+        ("⚖️","Conseil Juridique","Orientation procédure, délais, frais.", "Sur rendez-vous"),
+    };
+}
+<section class="section">
+    <div class="container">
+        <div class="sec-head"><span class="eyebrow">SERVICES & TARIFS</span><h2>Nos Services</h2><p>Tarifs indicatifs — le devis exact est remis par l'huissier avant toute mission.</p></div>
+        <div class="grid-3">
+            @foreach (var (icon, titre, desc, prix) in services)
+            {
+                <div class="card"><div class="card-icon">@icon</div><h3>@titre</h3><p>@desc</p><p><strong style="color:#b45309;">@prix</strong></p><a asp-action="Contact" class="btn btn-gold btn-sm">Demander ce service →</a></div>
+            }
+        </div>
+    </div></section>

@@ -1,0 +1,23 @@
+﻿@* ===== Verifier.cshtml ===== *@
+@{
+    ViewData["Title"] = "Vérification"; Layout = "_LayoutSite";
+    var type = ViewBag.Type as string ?? "huissier";
+    var trouve = ViewBag.Trouve as bool? ?? false;
+}
+<section class="section">
+    <div class="container" style="max-width:720px;">
+        <div class="sec-head"><span class="eyebrow">VÉRIFICATION OFFICIELLE</span><h2>Résultat de la vérification</h2><p>Recherche : <strong>@ViewBag.Numero</strong> (@type)</p></div>
+        @if (trouve && type == "huissier" && Model is HuissariatPro.Models.Huissier h)
+        {
+            <div class="card" style="border-color:#bbf7d0;background:#f0fdf4;"><h3>✅ Huissier authentique</h3><p><strong>@h.NomComplet</strong><br>Matricule : <strong>@h.Matricule</strong><br>Étude : @h.Etude?.Nom<br>📍 @h.Ville — @h.Province<br>📞 @h.Telephone<br>Statut : <strong>@h.Statut</strong></p></div>
+        }
+        else if (trouve && type == "acte" && Model is HuissariatPro.Models.Acte a)
+        {
+            <div class="card" style="border-color:#bbf7d0;background:#f0fdf4;"><h3>✅ Acte authentique</h3><p>N° Acte : <strong>@a.NumeroActe</strong><br>Type : @a.Type<br>Huissier : @a.Huissier?.NomComplet<br>Destinataire : @a.Destinataire<br>Date acte : @a.DateActe.ToString("dd/MM/yyyy")<br>Statut : <strong>@a.Statut</strong></p></div>
+        }
+        else
+        {
+            <div class="card" style="border-color:#fecaca;background:#fef2f2;"><h3>❌ Aucun résultat</h3><p>Aucun @(type == "acte" ? "acte" : "huissier") trouvé pour « <strong>@ViewBag.Numero</strong> ».<br>Attention : il peut s'agir d'un faux document. Appelez la Représentation au <strong>+243 900 000 000</strong>.</p><a asp-action="Contact" class="btn btn-dark">Signaler un faux acte →</a></div>
+        }
+        <div class="center"><a asp-action="Index" class="btn btn-gold">← Retour à l'accueil</a></div>
+    </div></section>

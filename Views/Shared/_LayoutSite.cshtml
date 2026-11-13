@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HuissariatPro | RDC</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a asp-controller="Site" asp-action="Index" class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span class="logo-text">Huissariat<b>Pro</b><small>République Démocratique du Congo</small></span>
+            </a>
+            <nav class="main-nav">
+                <a asp-controller="Site" asp-action="Index">Accueil</a>
+                <a asp-controller="Site" asp-action="Huissiers">Huissiers</a>
+                <a asp-controller="Site" asp-action="Services">Services</a>
+                <a asp-controller="Site" asp-action="Actualites">Actualités</a>
+                <a asp-controller="Site" asp-action="Contact">Contact</a>
+            </nav>
+            <div class="topbar-actions">
+                <a asp-controller="Site" asp-action="Verifier" class="btn btn-gold">🔍 Vérifier un acte</a>
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline">Connexion</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <h3>Huissariat<span>Pro</span></h3>
+                <p>Plateforme officielle de gestion et de vérification des actes des huissiers de justice en RDC.</p>
+                <p class="footer-badge">✓ Vérification en 5 secondes • 100% officiel</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <a asp-controller="Site" asp-action="Huissiers">Annuaire des huissiers</a>
+                <a asp-controller="Site" asp-action="Verifier">Vérifier un acte</a>
+                <a asp-controller="Site" asp-action="Services">Nos services</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>📍 Kinshasa, RDC<br />📞 +243 900 000 000<br />✉️ contact@huissariatpro.cd</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 HuissariatPro — Tous droits réservés.</div>
+    </footer>
+
+    <script src="~/js/site.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

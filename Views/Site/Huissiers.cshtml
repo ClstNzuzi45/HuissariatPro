@@ -1,0 +1,27 @@
+﻿@model HuissariatPro.ViewModels.SiteHuissiersViewModel
+@{
+    ViewData["Title"] = "Annuaire des Huissiers"; Layout = "_LayoutSite";
+}
+<section class="section">
+    <div class="container">
+        <div class="sec-head"><span class="eyebrow">ANNUAIRE NATIONAL</span><h2>Trouver un Huissier de Justice</h2><p>@Model.Total huissier(s) actif(s) dans l'annuaire officiel.</p></div>
+        <form method="get" asp-action="Huissiers" class="filter-row" style="margin-bottom:24px;">
+            <input type="text" name="recherche" value="@Model.Recherche" placeholder="🔍 Nom, matricule, ville..." />
+            <select name="province"><option value="">Toutes provinces</option>@foreach(var p in Model.Provinces){
+                <option value="@p" selected="@(Model.Province == p)">@p</option>
+            }
+        </select>
+        <button class="btn btn-dark">Filtrer</button>
+        <a asp-action="Huissiers" class="btn btn-white" style="border:1px solid #e2e8f0;">Effacer</a>
+    </form>
+    <div class="grid-3">
+        @if (!Model.Huissiers.Any())
+        {
+            <p style="grid-column:1/-1;text-align:center;color:#64748b;">Aucun huissier trouvé.</p>
+        }
+        @foreach (var h in Model.Huissiers)
+        {
+            <partial name="_HuissierCard" model="h" />
+        }
+    </div>
+</div></section>

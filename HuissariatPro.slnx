@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Éléments de solution/">
+    <File Path="DockerFile" />
+  </Folder>
+  <Project Path="HuissariatPro.csproj" />
+</Solution>
